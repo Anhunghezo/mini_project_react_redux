@@ -1,51 +1,72 @@
-# Giới thiệu dự án thực tế : Photo App
+# Mini Project: Photo App
 
-## Mini project Với REACT - REDUX
+## Setup environment 
 
-## Mục tiêu
+Github Project: https://github.com/paulnguyen-mn/redux-photo-app
 
-Xây dựng một project mini đơn giản để ứng dụng kiến thức phần Redux vào project ReactJS.
+### 1. Setup ReactJS App via Create React App
 
-- Đơn giản, không quá phức tạp.
-- Tập trung nhiều vào `Redux` với `Redux Toolkit`
-- Sử dụng toàn bộ là `hooks`
-- Học sử dụng UI lib: `Reactstrap`
-- Học các sử dụng form: `Formik`
-- Học cách tổ chức API (optional)
+> Link: https://create-react-app.dev/docs/getting-started/
 
-## Project này build cái gì?
+### 2. Add SCSS support
 
-`PHOTO APP`
+```js
+npm i --save-dev node-sass
+```
 
-- App đơn giản để quản lý hình ảnh yêu thích, được lựa chọn từ https://picsum.photos/ 
-- CRUD operators
-- Gồm có 2 trang:
-    - `Home` : listing + view + delete
-    - `AddEdit` : dùng để tạo mới + sửa thông tin của một photo.
-- Mỗi photo gồm `title` + `categoryID` + `imageUrl`
-- Các chức năng: 
-    - Render danh sách photo yêu thích
-    - Lọc photo theo category
-    - Thêm mới một photo
-    - Remove một photo
-    - Persist dữ liệu khi reload browser
-    - Random photo ngẫu nhiên từ https://picsum.photos/
-    - Hiển thị danh sách photo https://picsum.photos/ để lựa chọn
+### 3. Add react router 
 
-## Công nghệ sử dụng trong project này
-- ReactJS (CRA)
-- Redux (Redux Toolkit)
-- Form management: Formik
-- Routings: React Router
-- UI lib: Reactstrap
-- Redux-Persist
+```
+npm i --save react-router-dom
+```
 
-## Bạn sẽ học được gì từ project nay
+### 4. Add UI lib
 
-- Tổ chức folder, files trong thực tế.
-- Sử dụng Redux tốt hơn với Redux Toolkit.
-- Biết cách tạo các custom field trong `Formik`
-- Thiết kế routing trong ReactJS App.
-- Sử dụng một thư viện UI bên ngoài để làm UI cho lẹ.
+```
+npm i --save reactstrap
+```
 
-> GOOD LUCK for all of us 💚!!!
+
+## Tổ chức folder
+
+```
+src
+|__ assets
+|  |__ images
+|  |__ styles (global styles) 
+|
+|__ components (shared components)
+|
+|__ features
+  |__ Photo
+    |__ components
+    |  |__ PhotoList
+    |  |__ PhotoCard
+    |  |__ PhotoForm
+    |
+    |__ pages
+    |  |__ MainPage
+    |  |__ AddEditPage
+    |__ photoSlice.js
+    |__ index.js
+```
+
+## Tổ chức routing
+
+- Sử dụng kĩ thuật lazy load components.
+- Load theo features.
+
+```js
+// App.js
+function App() {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route path="/photos" component={Photo} />
+        <Route path="/user" component={User} />
+        <Route component={NotFound} />
+      </Switch>
+    </BrowserRouter>
+  )
+}
+```
