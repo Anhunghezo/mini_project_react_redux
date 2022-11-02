@@ -1,5 +1,5 @@
-import Banner from 'components/Banner';
-import PhotoForm from 'features/Photo/components/PhotoForm';
+import Banner from 'components/Banner/Banner';
+import PhotoForm from 'features/Photo/components/PhotoForm/PhotoForm';
 import React from 'react';
 import './styles.scss';
 

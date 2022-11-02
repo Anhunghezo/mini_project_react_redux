@@ -1,4 +1,4 @@
-import Banner from 'components/Banner';
+import Banner from 'components/Banner/Banner';
 import Images from 'constants/images';
 import React from 'react';
 import { Link } from 'react-router-dom';

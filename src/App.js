@@ -1,11 +1,11 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './App.scss';
-import Header from './components/Header';
-import NotFound from './components/NotFound';
+import Header from './components/Header/Header';
+import NotFound from './components/NotFound/NotFound';
 
 // Lazy load - Code splitting
-const Photo = React.lazy(() => import('./features/Photo'));
+const Photo = React.lazy(() => import('./features/Photo/Photo'));
 
 function App() {
   return (
