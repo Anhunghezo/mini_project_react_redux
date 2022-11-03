@@ -11,14 +11,7 @@ function Header() {
       <Container>
         <Row className="justify-content-between">
           <Col xs="auto">
-            <a
-              className="header__link header__title"
-              href="https://youtube.com/easyfrontend"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Easy Frontend
-            </a>
+            <i className="header__link header__title">Picsum.photos App</i>
           </Col>
 
           <Col xs="auto">

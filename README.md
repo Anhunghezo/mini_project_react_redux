@@ -1,6 +1,6 @@
 # Mini Project: Photo App
 
-## Setup environment 
+## Setup environment
 
 Github Project: https://github.com/paulnguyen-mn/redux-photo-app
 
@@ -14,7 +14,7 @@ Github Project: https://github.com/paulnguyen-mn/redux-photo-app
 npm i --save-dev node-sass
 ```
 
-### 3. Add react router 
+### 3. Add react router
 
 ```
 npm i --save react-router-dom
@@ -26,14 +26,13 @@ npm i --save react-router-dom
 npm i --save reactstrap
 ```
 
-
 ## Tổ chức folder
 
 ```
 src
 |__ assets
 |  |__ images
-|  |__ styles (global styles) 
+|  |__ styles (global styles)
 |
 |__ components (shared components)
 |
@@ -67,6 +66,50 @@ function App() {
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
-  )
+  );
 }
 ```
+
+## Custom Field
+
+- Cầu nối giữa UI control và Formik.
+- UI control là một controlled component với props:
+  - name: tên xác định control
+  - value: giá trị của control
+  - onChange: trigger hàm này với giá trị mới khi có thay đổi
+  - onBlur: xác định khi nào thì control này bị touched
+
+```js
+function InputField(props) {
+  const { field, type, label, placeholder, disabled } = props;
+  const { name } = field;
+  return (
+    <FormGroup>
+      {label && <Label for={name}>{label}</Label>}
+      <Input
+        id={name}
+        {...field}
+        type={type}
+        disabled={disabled}
+        placeholder={placeholder}
+      />
+    </FormGroup>
+  );
+}
+```
+
+## Random Photo control
+
+RandomPhoto
+Props
+
+- name
+- imageUrl
+- onImageUrlChange
+- onRandomButtonBlur
+
+RandomPhotoField
+
+Formik
+
+Yup
