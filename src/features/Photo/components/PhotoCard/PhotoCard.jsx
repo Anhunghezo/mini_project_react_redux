@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import { Button, Modal, ModalBody } from 'reactstrap';
 import './PhotoCard.scss';
+import { useState } from 'react';
 PhotoCard.propTypes = {
     photo: PropTypes.object,
     onEditClick: PropTypes.func,
@@ -14,6 +15,7 @@ PhotoCard.defaultProps = {
 }
 
 function PhotoCard(props) {
+    const [modal, setModal] = useState(false);
     const { photo, onEditClick, onRemoveClick } = props;
 
     const handleEditClick = () => {
@@ -24,8 +26,16 @@ function PhotoCard(props) {
         if (onRemoveClick) onRemoveClick(photo);
     }
 
+    const toggle = () => setModal(!modal);
+
     return (
-        <div className="photo">
+        <div className="photo" onClick={toggle}>
+            <Modal isOpen={modal} toggle={toggle} size='lg' keyboard={true} centered={true}>
+                <ModalBody>
+                    <img src={photo.photo} alt={photo.title} className='img-Modal' />
+                </ModalBody>
+            </Modal>
+
             <img src={photo.photo} alt={photo.title} />
             <div className="photo__overlay">
                 <h3 className="photo__title">{photo.title}</h3>
