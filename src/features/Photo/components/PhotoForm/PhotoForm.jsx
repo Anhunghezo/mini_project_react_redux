@@ -20,11 +20,12 @@ PhotoForm.defaultProps = {
 
 function PhotoForm(props) {
   // npm i --save react-select
-  const initialValues = {
-    title: '',
-    categoryId: null,
-    photo: '',
-  };
+  const { initialValues, isAddMode } = props;
+  // const initialValues = {
+  //   title: '',
+  //   categoryId: null,
+  //   photo: '',
+  // };
 
   const validationScheme = Yup.object().shape({
     title: Yup.string().required('This field is required!'),
@@ -104,9 +105,9 @@ function PhotoForm(props) {
             </FormGroup> */}
 
             <FormGroup>
-              <Button type="submit" color="primary">
-                {isSubmitting && <Spinner size="sm" mr-1 />}
-                Add to album
+              <Button type="submit" color={isAddMode ? 'primary' : 'success'}>
+                {isSubmitting && <Spinner size="sm" />}
+                {isAddMode ? 'Add to album' : 'Update your photo'}
               </Button>
             </FormGroup>
           </Form>
