@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Select from 'react-select';
 import { Button, FormGroup, Input, Label } from 'reactstrap';
+import * as Yup from 'yup';
 
 PhotoForm.propTypes = {
   onSubmit: PropTypes.func,
@@ -22,12 +23,28 @@ function PhotoForm(props) {
   const initialValues = {
     title: '',
     categoryId: null,
+    photo: '',
   };
 
+  const validationScheme = Yup.object().shape({
+    title: Yup.string().required('This field is required!'),
+
+    categoryId: Yup.number().required('This field is required!').nullable(),
+
+    photo: Yup.string().required('This field is required!'),
+
+    // photo: Yup.string().when('categoryId', {
+    //   is: 1,
+    //   then: Yup.string().required('This field is required!'),
+    //   otherwise: Yup.string().notRequired(),
+    // })
+    //khi categoryId = 1 -> photo is required/ not required when # 1
+  })
 
   return (
     <Formik
       initialValues={initialValues}
+      validationSchema={validationScheme}
       onSubmit={values => console.log('Submit: ', values)}
     >
       {formikProps => {
